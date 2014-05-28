@@ -22,20 +22,20 @@ EXPOSE  8126:8126
 # Install graphite
 RUN     pip install https://github.com/graphite-project/ceres/tarball/master &&\
         pip install whisper &&\
-        pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/lib" carbon &&\
-        pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/webapp" graphite-web
+        pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/lib" carbon &&\
+        pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/webapp" graphite-web
 
 # Setup graphite
-ADD     ./graphite/initial_data.json /var/lib/graphite/webapp/graphite/initial_data.json
-ADD     ./graphite/local_settings.py /var/lib/graphite/webapp/graphite/local_settings.py
-ADD     ./graphite/carbon.conf /var/lib/graphite/conf/carbon.conf
-ADD     ./graphite/storage-schemas.conf /var/lib/graphite/conf/storage-schemas.conf
-RUN     mkdir -p /var/lib/graphite/storage/whisper &&\
-        touch /var/lib/graphite/storage/graphite.db /var/lib/graphite/storage/index &&\
-        chown -R www-data /var/lib/graphite/storage &&\
-        chmod 0775 /var/lib/graphite/storage /var/lib/graphite/storage/whisper &&\
-        chmod 0664 /var/lib/graphite/storage/graphite.db &&\
-        cd /var/lib/graphite/webapp/graphite && python manage.py syncdb --noinput
+ADD     ./graphite/initial_data.json /src/graphite/webapp/graphite/initial_data.json
+ADD     ./graphite/local_settings.py /src/graphite/webapp/graphite/local_settings.py
+ADD     ./graphite/carbon.conf /src/graphite/conf/carbon.conf
+ADD     ./graphite/storage-schemas.conf /src/graphite/conf/storage-schemas.conf
+RUN     mkdir -p /src/graphite/storage/whisper &&\
+        touch /src/graphite/storage/graphite.db /src/graphite/storage/index &&\
+        chown -R www-data /src/graphite/storage &&\
+        chmod 0775 /src/graphite/storage /src/graphite/storage/whisper &&\
+        chmod 0664 /src/graphite/storage/graphite.db &&\
+        cd /src/graphite/webapp/graphite && python manage.py syncdb --noinput
 
 # Install grafana
 RUN     cd /src &&\

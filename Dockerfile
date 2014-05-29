@@ -11,7 +11,7 @@ RUN     add-apt-repository ppa:chris-lea/node.js &&\
 RUN     apt-get -y install  python-django-tagging python-simplejson python-memcache \
                             python-ldap python-cairo python-django python-twisted   \
                             python-pysqlite2 python-support python-pip gunicorn     \
-                            supervisor nginx-light nodejs git wget curl
+                            supervisor nginx-light nodejs git wget curl openjdk-7-jre
 
 # Setup statsd
 RUN     mkdir /src && git clone https://github.com/etsy/statsd.git /src/statsd
@@ -36,6 +36,12 @@ RUN     mkdir -p /src/graphite/storage/whisper &&\
         chmod 0775 /src/graphite/storage /src/graphite/storage/whisper &&\
         chmod 0664 /src/graphite/storage/graphite.db &&\
         cd /src/graphite/webapp/graphite && python manage.py syncdb --noinput
+        
+# Install Elasticsearch
+RUN     wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - &&\
+        deb http://packages.elasticsearch.org/elasticsearch/1.1/debian stable main &&\
+        apt-get -y install elasticsearch
+ADD	./elasticsearch/run /usr/local/bin/run_elasticsearch
 
 # Install grafana
 RUN     cd /src &&\

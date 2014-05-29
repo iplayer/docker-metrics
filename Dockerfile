@@ -16,8 +16,6 @@ RUN     apt-get -y install  python-django-tagging python-simplejson python-memca
 # Setup statsd
 RUN     mkdir /src && git clone https://github.com/etsy/statsd.git /src/statsd
 ADD     ./statsd/config.js /src/statsd/config.js
-EXPOSE  8125:8125/udp
-EXPOSE  8126:8126
 
 # Install graphite
 RUN     pip install https://github.com/graphite-project/ceres/tarball/master &&\
@@ -63,8 +61,6 @@ ADD     ./grafana/config.js /src/grafana/config.js
 # Setup nginx
 ADD     ./nginx/nginx.conf /etc/nginx/nginx.conf
 ADD     ./nginx/htpasswd /etc/nginx/htpasswd
-EXPOSE  80:80
-EXPOSE  8080:8080
 
 # Setup supervisor
 ADD     ./supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf

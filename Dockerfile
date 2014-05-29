@@ -48,7 +48,7 @@ RUN     apt-get -y install libfuse2 &&\
         cd /tmp ; dpkg -i /fuse.deb
 RUN     apt-get -y install openjdk-7-jre
 RUN     wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - &&\
-        deb http://packages.elasticsearch.org/elasticsearch/1.1/debian stable main &&\
+        add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.1/debian stable main" &&\
         apt-get -y install elasticsearch
 ADD	./elasticsearch/run /usr/local/bin/run_elasticsearch
 

@@ -11,7 +11,7 @@ RUN     add-apt-repository ppa:chris-lea/node.js &&\
 RUN     apt-get -y install  python-django-tagging python-simplejson python-memcache \
                             python-ldap python-cairo python-django python-twisted   \
                             python-pysqlite2 python-support python-pip gunicorn     \
-                            supervisor nginx-light nodejs git wget curl openjdk-7-jre
+                            supervisor nginx-light nodejs git wget curl
 
 # Setup statsd
 RUN     mkdir /src && git clone https://github.com/etsy/statsd.git /src/statsd
@@ -38,6 +38,15 @@ RUN     mkdir -p /src/graphite/storage/whisper &&\
         cd /src/graphite/webapp/graphite && python manage.py syncdb --noinput
         
 # Install Elasticsearch
+RUN     apt-get -y install libfuse2 &&\
+        cd /tmp ; apt-get download fuse &&\
+        cd /tmp ; dpkg-deb -x fuse_* . &&\
+        cd /tmp ; dpkg-deb -e fuse_* &&\
+        cd /tmp ; rm fuse_*.deb &&\
+        cd /tmp ; echo -en '#!/bin/bash\nexit 0\n' > DEBIAN/postinst &&\
+        cd /tmp ; dpkg-deb -b . /fuse.deb &&\
+        cd /tmp ; dpkg -i /fuse.deb
+RUN     apt-get -y install openjdk-7-jre
 RUN     wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - &&\
         deb http://packages.elasticsearch.org/elasticsearch/1.1/debian stable main &&\
         apt-get -y install elasticsearch

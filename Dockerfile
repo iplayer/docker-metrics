@@ -58,6 +58,12 @@ RUN     cd /src &&\
 
 ADD     ./grafana/config.js /src/grafana/config.js
 
+# Install mongo
+RUN     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 &&\
+        echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list &&\
+        apt-get update &&\
+        apt-get install mongodb-org
+
 # Install seyren
 RUN     cd /src &&\
         wget https://github.com/scobal/seyren/releases/download/1.1.0/seyren-1.1.0.jar

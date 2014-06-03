@@ -58,6 +58,12 @@ RUN     cd /src &&\
 
 ADD     ./grafana/config.js /src/grafana/config.js
 
+# Install seyren
+RUN     cd /src &&\
+        wget https://github.com/scobal/seyren/releases/download/1.1.0/seyren-1.1.0.jar &&\
+ADD     ./seyren/seyren.conf /etc/init/seyren.conf
+RUN     sudo service seyren start
+
 # Setup nginx
 ADD     ./nginx/nginx.conf /etc/nginx/nginx.conf
 ADD     ./nginx/htpasswd /etc/nginx/htpasswd

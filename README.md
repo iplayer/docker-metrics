@@ -20,6 +20,3 @@ sudo ./build
 ```bash
 sudo ./start
 ```
-
-
-Based on https://github.com/SamSaffron/graphite_docker

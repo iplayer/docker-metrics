@@ -21,7 +21,7 @@ function (Settings) {
      * in nginx or apache for cross origin domain sharing to work (CORS).
      * Check install documentation on github
      */
-    graphiteUrl: "http://"+window.location.hostname+":8080",
+    graphiteUrl: "http://" + window.location.hostname + ":81",
 
     /**
      * Multiple graphite servers? Comment out graphiteUrl and replace with

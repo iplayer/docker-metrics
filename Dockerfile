@@ -46,9 +46,9 @@ RUN     apt-get -y install libfuse2 &&\
         cd /tmp ; dpkg-deb -b . /fuse.deb &&\
         cd /tmp ; dpkg -i /fuse.deb
 RUN     apt-get -y install openjdk-7-jre
-RUN     cd ~ && wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.0.deb
-RUN     cd ~ && dpkg -i elasticsearch-1.2.0.deb && rm elasticsearch-1.2.0.deb
-ADD	./elasticsearch/run /usr/local/bin/run_elasticsearch
+RUN     cd ~ && wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb
+RUN     cd ~ && dpkg -i elasticsearch-1.2.1.deb && rm elasticsearch-1.2.1.deb
+ADD	    ./elasticsearch/run /usr/local/bin/run_elasticsearch
 RUN     mkdir /tmp/elasticsearch && chmod 777 /tmp/elasticsearch
 
 # Install grafana

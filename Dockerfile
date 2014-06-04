@@ -28,6 +28,7 @@ ADD     ./graphite/initial_data.json /src/graphite/webapp/graphite/initial_data.
 ADD     ./graphite/local_settings.py /src/graphite/webapp/graphite/local_settings.py
 ADD     ./graphite/carbon.conf /src/graphite/conf/carbon.conf
 ADD     ./graphite/storage-schemas.conf /src/graphite/conf/storage-schemas.conf
+ADD     ./graphite/storage-aggregation.conf /src/graphite/conf/storage-aggregation.conf
 RUN     mkdir -p /src/graphite/storage/whisper &&\
         touch /src/graphite/storage/graphite.db /src/graphite/storage/index &&\
         chown -R www-data /src/graphite/storage &&\

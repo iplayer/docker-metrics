@@ -21,7 +21,7 @@ ADD     ./statsd/config.js /src/statsd/config.js
 RUN     pip install https://github.com/graphite-project/ceres/tarball/master &&\
         pip install whisper &&\
         pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/lib" carbon &&\
-        pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/webapp" graphite-web
+        pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/webapp" git+git://github.com/graphite-project/graphite-web@0.9.x
 
 # Setup graphite
 ADD     ./graphite/initial_data.json /src/graphite/webapp/graphite/initial_data.json
@@ -35,7 +35,7 @@ RUN     mkdir -p /src/graphite/storage/whisper &&\
         chmod 0775 /src/graphite/storage /src/graphite/storage/whisper &&\
         chmod 0664 /src/graphite/storage/graphite.db &&\
         cd /src/graphite/webapp/graphite && python manage.py syncdb --noinput
-        
+
 # Install Elasticsearch
 RUN     apt-get -y install libfuse2 &&\
         cd /tmp ; apt-get download fuse &&\
@@ -53,9 +53,9 @@ RUN     mkdir /tmp/elasticsearch && chmod 777 /tmp/elasticsearch
 
 # Install grafana
 RUN     cd /src &&\
-        wget http://grafanarel.s3.amazonaws.com/grafana-1.5.4.tar.gz &&\
-        tar -xzvf grafana-1.5.4.tar.gz && rm grafana-1.5.4.tar.gz &&\
-        mv grafana-1.5.4 grafana
+        wget http://grafanarel.s3.amazonaws.com/grafana-1.6.1.tar.gz &&\
+        tar -xzvf grafana-1.6.1.tar.gz && rm grafana-1.6.1.tar.gz &&\
+        mv grafana-1.6.1 grafana
 
 ADD     ./grafana/config.js /src/grafana/config.js
 

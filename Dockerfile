@@ -70,10 +70,6 @@ RUN     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 &&
 RUN     cd /src &&\
         wget https://github.com/scobal/seyren/releases/download/1.1.0/seyren-1.1.0.jar
 
-# Setup nginx
-ADD     ./nginx/nginx.conf /etc/nginx/nginx.conf
-ADD     ./nginx/htpasswd /etc/nginx/htpasswd
-
 # Setup supervisor
 ADD     ./supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD     ["/usr/bin/supervisord"]

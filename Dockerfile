@@ -11,7 +11,7 @@ RUN     add-apt-repository ppa:chris-lea/node.js &&\
 RUN     apt-get -y install  python-django-tagging python-simplejson python-memcache \
                             python-ldap python-cairo python-django python-twisted   \
                             python-pysqlite2 python-support python-pip gunicorn     \
-                            supervisor nginx-light nodejs git wget curl
+                            supervisor nodejs git wget curl
 
 # Setup statsd
 RUN     mkdir /src && git clone https://github.com/etsy/statsd.git /src/statsd
@@ -69,6 +69,7 @@ RUN     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 &&
 # Install seyren
 RUN     cd /src &&\
         wget https://github.com/scobal/seyren/releases/download/1.1.0/seyren-1.1.0.jar
+
 
 # Setup supervisor
 ADD     ./supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf

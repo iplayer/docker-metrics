@@ -39,7 +39,7 @@ function (Settings) {
      * Example: "-0500" (for UTC - 5 hours)
      */
     timezoneOffset: null,
-
+    unsaved_changes_warning: false,
     grafana_index: "grafana-dash",
 
     panel_names: [

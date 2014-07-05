@@ -12,7 +12,7 @@ function (Settings) {
      * elasticsearch url:
      * For Basic authentication use: http://username:password@domain.com:9200
      */
-    elasticsearch: "http://"+window.location.hostname+":9201",
+    elasticsearch: "https://"+window.location.hostname+":9201",
 
     /**
      * graphite-web url:
@@ -21,7 +21,7 @@ function (Settings) {
      * in nginx or apache for cross origin domain sharing to work (CORS).
      * Check install documentation on github
      */
-    graphiteUrl: "http://" + window.location.hostname + ":81",
+    graphiteUrl: "https://" + window.location.hostname + ":81",
 
     /**
      * Multiple graphite servers? Comment out graphiteUrl and replace with
@@ -32,7 +32,7 @@ function (Settings) {
      *  }
      */
 
-    default_route: '/dashboard/file/default.json',
+    default_route: '/dashboard/elasticsearch/iBL',
 
     /**
      * If your graphite server has another timezone than you & users browsers specify the offset here

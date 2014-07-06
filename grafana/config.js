@@ -8,20 +8,20 @@ function (Settings) {
 
   return new Settings({
 
+    datasources: {
+      graphite: {
+        type: 'graphite',
+        url: "https://" + window.location.hostname + ":81",
+        default: true,
+        render_method: 'GET'
+      }
+    },
+
     /**
      * elasticsearch url:
      * For Basic authentication use: http://username:password@domain.com:9200
      */
     elasticsearch: "https://"+window.location.hostname+":9201",
-
-    /**
-     * graphite-web url:
-     * For Basic authentication use: http://username:password@domain.com
-     * Basic authentication requires special HTTP headers to be configured
-     * in nginx or apache for cross origin domain sharing to work (CORS).
-     * Check install documentation on github
-     */
-    graphiteUrl: "https://" + window.location.hostname + ":81",
 
     /**
      * Multiple graphite servers? Comment out graphiteUrl and replace with

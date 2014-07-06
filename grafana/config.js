@@ -11,7 +11,7 @@ function (Settings) {
     datasources: {
       graphite: {
         type: 'graphite',
-        url: "https://" + window.location.hostname + ":81",
+        url: "https://username:password@iplayer.io:81",
         default: true,
         render_method: 'GET'
       }

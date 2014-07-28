@@ -1,21 +1,13 @@
-FROM    ubuntu:13.04
+FROM    phusion/baseimage:0.9.11
 ENV     DEBIAN_FRONTEND noninteractive
 RUN     apt-get -y update
 RUN     apt-get install -y -q python-software-properties software-properties-common
-
-# Add nodejs repo
-RUN     add-apt-repository ppa:chris-lea/node.js &&\
-        apt-get -y update
 
 # Install dependencies
 RUN     apt-get -y install  python-django-tagging python-simplejson python-memcache \
                             python-ldap python-cairo python-django python-twisted   \
                             python-pysqlite2 python-support python-pip gunicorn     \
-                            supervisor nginx-light nodejs git wget curl
-
-# Setup statsd
-RUN     mkdir /src && git clone https://github.com/etsy/statsd.git /src/statsd
-ADD     ./statsd/config.js /src/statsd/config.js
+                            supervisor nginx-light git wget curl
 
 # Install graphite
 RUN     pip install https://github.com/graphite-project/ceres/tarball/master &&\
@@ -58,17 +50,6 @@ RUN     cd /src &&\
         mv grafana-1.6.1 grafana
 
 ADD     ./grafana/config.js /src/grafana/config.js
-
-# Install mongo
-RUN     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 &&\
-        echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list &&\
-        apt-get -y update &&\
-        apt-get -y install mongodb-org &&\
-        mkdir -p /data/db
-
-# Install seyren
-RUN     cd /src &&\
-        wget https://github.com/scobal/seyren/releases/download/1.1.0/seyren-1.1.0.jar
 
 # Setup nginx
 ADD     ./nginx /etc/nginx

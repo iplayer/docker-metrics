@@ -56,5 +56,7 @@ ADD     ./nginx /etc/nginx
 RUN     chown -R www-data:www-data /etc/nginx
 
 # Setup supervisor
+RUN     mkdir /etc/service/supervisord
+ADD     ./supervisor/supervisord.sh /etc/service/supervisord/run
 ADD     ./supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-CMD     ["/usr/bin/supervisord"]
+CMD     ["/sbin/my_init"]

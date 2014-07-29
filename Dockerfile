@@ -7,7 +7,7 @@ RUN     apt-get install -y -q python-software-properties software-properties-com
 RUN     apt-get -y install  python-django-tagging python-simplejson python-memcache \
                             python-ldap python-cairo python-django python-twisted   \
                             python-pysqlite2 python-support python-pip gunicorn     \
-                            supervisor nginx-light git wget curl
+                            supervisor nginx-light git wget curl memcached
 
 # Install graphite
 RUN     pip install https://github.com/graphite-project/ceres/tarball/master &&\

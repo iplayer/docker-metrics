@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN     apt-get -y update &&\
-        apt-get -y intsall wget
+        apt-get -y install wget
 
 # Install grafana
 RUN     cd /tmp &&\

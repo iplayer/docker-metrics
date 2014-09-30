@@ -3,6 +3,7 @@ FROM    nginx
 RUN     apt-get -y update
 RUN     apt-get -y install wget
 RUN     mkdir /src
+RUN     mkdir -p /data/log/nginx
 
 # Install grafana
 RUN     cd /tmp &&\

@@ -12,4 +12,6 @@ RUN     cd /tmp &&\
 
 ADD     config/config.js /src/grafana/config.js
 
-RUN    ln -s /usr/share/nginx/html /src/grafana
+COPY    config/nginx.conf /etc/nginx/nginx.conf
+
+VOLUME  ["/data"]

@@ -14,6 +14,4 @@ ADD     config/config.js /src/grafana/config.js
 
 RUN    ln -s /usr/share/nginx/html /src/grafana
 
-VOLUME ["/src/grafana"]
-
-CMD    ["/bin/bash"]
+CMD    ["nginx"]

@@ -1,4 +1,4 @@
 #! /bin/bash
 
 chmod -R 777 /data
-docker run -d -v /data/db:/data/db -v /data/certificates:/etc/nginx/ssl -v /data/elasticsearch:/var/lib/elasticsearch -v /data/graphite:/src/graphite/storage/whisper -v /data/grafana:/src/grafana/app/dashboards -p 443:443 -p 80:80 -p 2003:2003 -p 9000:9000 -p 9201:9201 iplayer/metrics /sbin/my_init --enable-insecure-key
+docker run -d -v /data/db:/data/db -v /data/certificates:/etc/nginx/ssl -v /data/elasticsearch:/var/lib/elasticsearch -v /data/graphite:/src/graphite/storage/whisper -v /data/grafana:/src/grafana/app/dashboards -p 443:443 -p 80:80 -p 82:82 -p 2003:2003 -p 9000:9000 -p 9201:9201 iplayer/metrics /sbin/my_init --enable-insecure-key

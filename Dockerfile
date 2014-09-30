@@ -3,24 +3,12 @@ ENV     DEBIAN_FRONTEND noninteractive
 RUN     apt-get -y update
 RUN     apt-get install -y -q python-software-properties software-properties-common
 
-# Install dependencies
-RUN     apt-get -y install  python-django-tagging python-simplejson python-memcache \
-                            python-ldap python-cairo python-django python-twisted   \
-                            python-pysqlite2 python-support python-pip gunicorn     \
-                            supervisor nginx-light git wget curl memcached
-
 # Install mongo
 RUN     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 &&\
         echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list &&\
         apt-get -y update &&\
         apt-get -y install mongodb-org &&\
         mkdir -p /data/mongodb
-
-# Install graphite
-RUN     pip install https://github.com/graphite-project/ceres/tarball/master &&\
-        pip install git+git://github.com/graphite-project/whisper@0.9.x &&\
-        pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/lib" git+git://github.com/graphite-project/carbon@0.9.x &&\
-        pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/webapp" git+git://github.com/graphite-project/graphite-web@0.9.x
 
 # Setup graphite
 ADD     ./graphite/initial_data.json /src/graphite/webapp/graphite/initial_data.json

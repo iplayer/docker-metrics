@@ -35,21 +35,6 @@ RUN     mkdir -p /src/graphite/storage/whisper &&\
         chmod 0664 /src/graphite/storage/graphite.db &&\
         cd /src/graphite/webapp/graphite && python manage.py syncdb --noinput
 
-# Install Elasticsearch
-RUN     apt-get -y install libfuse2 &&\
-        cd /tmp ; apt-get download fuse &&\
-        cd /tmp ; dpkg-deb -x fuse_* . &&\
-        cd /tmp ; dpkg-deb -e fuse_* &&\
-        cd /tmp ; rm fuse_*.deb &&\
-        cd /tmp ; echo -en '#!/bin/bash\nexit 0\n' > DEBIAN/postinst &&\
-        cd /tmp ; dpkg-deb -b . /fuse.deb &&\
-        cd /tmp ; dpkg -i /fuse.deb
-RUN     apt-get -y install openjdk-7-jre
-RUN     cd ~ && wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb
-RUN     cd ~ && dpkg -i elasticsearch-1.2.1.deb && rm elasticsearch-1.2.1.deb
-ADD	    ./elasticsearch/run /usr/local/bin/run_elasticsearch
-RUN     mkdir /tmp/elasticsearch && chmod 777 /tmp/elasticsearch
-
 ADD     ./grafana/config.js /src/grafana/config.js
 
 # Install Seyren

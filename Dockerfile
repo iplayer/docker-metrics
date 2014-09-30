@@ -9,6 +9,13 @@ RUN     apt-get -y install  python-django-tagging python-simplejson python-memca
                             python-pysqlite2 python-support python-pip gunicorn     \
                             supervisor nginx-light git wget curl memcached
 
+# Install mongo
+RUN     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 &&\
+        echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list &&\
+        apt-get -y update &&\
+        apt-get -y install mongodb-org &&\
+        mkdir -p /data/mongodb
+
 # Install graphite
 RUN     pip install https://github.com/graphite-project/ceres/tarball/master &&\
         pip install git+git://github.com/graphite-project/whisper@0.9.x &&\
@@ -50,6 +57,10 @@ RUN     cd /src &&\
         mv grafana-1.6.1 grafana
 
 ADD     ./grafana/config.js /src/grafana/config.js
+
+# Install Seyren
+RUN     cd /src &&\
+        wget https://github.com/scobal/seyren/releases/download/1.1.0/seyren-1.1.0.jar
 
 # Setup nginx
 ADD     ./nginx /etc/nginx

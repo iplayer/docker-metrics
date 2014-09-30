@@ -1,9 +1,7 @@
-FROM ubuntu
+FROM    nginx
 
 RUN     apt-get -y update
-
 RUN     apt-get -y install wget
-
 RUN     mkdir /src
 
 # Install grafana
@@ -14,4 +12,8 @@ RUN     cd /tmp &&\
 
 ADD     config/config.js /src/grafana/config.js
 
+RUN    ln -s /usr/share/nginx/html /src/grafana
+
 VOLUME ["/src/grafana"]
+
+CMD    ["/bin/bash"]

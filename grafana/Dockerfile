@@ -13,5 +13,3 @@ RUN     cd /tmp &&\
 ADD     config/config.js /src/grafana/config.js
 
 RUN    ln -s /usr/share/nginx/html /src/grafana
-
-CMD    ["nginx"]

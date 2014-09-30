@@ -45,12 +45,6 @@ RUN     cd /src &&\
 ADD     ./nginx /etc/nginx
 RUN     chown -R www-data:www-data /etc/nginx
 
-# Install grafana
-RUN     cd /src &&\
-        wget http://grafanarel.s3.amazonaws.com/grafana-1.8.0.tar.gz &&\
-        tar -xzvf grafana-1.8.0.tar.gz && rm grafana-1.8.0.tar.gz &&\
-        mv grafana-1.8.0 grafana
-
 # Setup supervisor
 RUN     mkdir /etc/service/supervisord
 ADD     ./supervisor/supervisord.sh /etc/service/supervisord/run

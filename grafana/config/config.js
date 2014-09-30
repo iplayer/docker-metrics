@@ -21,7 +21,7 @@ function (Settings) {
      * elasticsearch url:
      * For Basic authentication use: http://username:password@domain.com:9200
      */
-    elasticsearch: "https://"+window.location.hostname+":9201",
+    elasticsearch: "https://"+window.location.hostname+":9200",
 
     /**
      * Multiple graphite servers? Comment out graphiteUrl and replace with

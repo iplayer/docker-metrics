@@ -50,12 +50,6 @@ RUN     cd ~ && dpkg -i elasticsearch-1.2.1.deb && rm elasticsearch-1.2.1.deb
 ADD	    ./elasticsearch/run /usr/local/bin/run_elasticsearch
 RUN     mkdir /tmp/elasticsearch && chmod 777 /tmp/elasticsearch
 
-# Install grafana
-RUN     cd /src &&\
-        wget http://grafanarel.s3.amazonaws.com/grafana-1.6.1.tar.gz &&\
-        tar -xzvf grafana-1.6.1.tar.gz && rm grafana-1.6.1.tar.gz &&\
-        mv grafana-1.6.1 grafana
-
 ADD     ./grafana/config.js /src/grafana/config.js
 
 # Install Seyren
@@ -65,6 +59,12 @@ RUN     cd /src &&\
 # Setup nginx
 ADD     ./nginx /etc/nginx
 RUN     chown -R www-data:www-data /etc/nginx
+
+# Install grafana
+RUN     cd /src &&\
+        wget http://grafanarel.s3.amazonaws.com/grafana-1.8.0.tar.gz &&\
+        tar -xzvf grafana-1.8.0.tar.gz && rm grafana-1.8.0.tar.gz &&\
+        mv grafana-1.8.0 grafana
 
 # Setup supervisor
 RUN     mkdir /etc/service/supervisord

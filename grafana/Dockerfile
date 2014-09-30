@@ -1,5 +1,8 @@
 FROM ubuntu
 
+RUN     apt-get -y update &&\
+        apt-get -y intsall wget
+
 # Install grafana
 RUN     cd /tmp &&\
         wget http://grafanarel.s3.amazonaws.com/grafana-1.8.0.tar.gz &&\

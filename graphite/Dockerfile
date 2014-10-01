@@ -1,7 +1,7 @@
 FROM    ubuntu
 
 RUN     apt-get -y update
-RUN     apt-get install -y -q python-software-properties software-properties-common
+RUN     apt-get install -y -q python-software-properties software-properties-common supervisor
 
 RUN     apt-get -y install  python-django-tagging python-simplejson python-memcache \
                             python-ldap python-cairo python-django python-pip  \

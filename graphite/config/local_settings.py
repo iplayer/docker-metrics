@@ -41,3 +41,5 @@ LOG_CACHE_PERFORMANCE = False
 #DATABASE_PASSWORD = 'graphite-is-awesome'
 #DATABASE_HOST = 'mysql.mycompany.com'
 #DATABASE_PORT = '3306'
+
+LOG_DIR = '/var/log'

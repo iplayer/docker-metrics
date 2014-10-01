@@ -26,4 +26,4 @@ EXPOSE  80
 EXPOSE  443
 
 # Elasticsearch port
-EXPOSE 9200
+EXPOSE 9201

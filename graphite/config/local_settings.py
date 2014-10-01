@@ -13,8 +13,8 @@ DEFAULT_CACHE_DURATION = 60
 # Sometimes you need to do a lot of rendering work but cannot share your storage mount
 #REMOTE_RENDERING = True
 #RENDERING_HOSTS = ['fastserver01','fastserver02']
-LOG_RENDERING_PERFORMANCE = True
-LOG_CACHE_PERFORMANCE = True
+LOG_RENDERING_PERFORMANCE = False
+LOG_CACHE_PERFORMANCE = False
 
 # If you've got more than one backend server they should all be listed here
 #CLUSTER_SERVERS = []

@@ -14,6 +14,7 @@ RUN     pip install --install-option="--prefix=/src/graphite" --install-option="
 
 # Setup graphite
 COPY    config/local_settings.py /src/graphite/webapp/graphite/local_settings.py
+COPY    config/supervisord.conf /etc/supervisord/supervisord.conf
 
 RUN     mkdir -p /data/graphite &&\
         touch /data/graphite/graphite.db /data/graphite/index &&\
@@ -24,3 +25,5 @@ RUN     mkdir -p /data/graphite &&\
 
 VOLUME  ["/var/log"]
 EXPOSE  8080
+
+CMD     ["/usr/bin/supervisord"]

@@ -1,7 +1,7 @@
 FROM    ubuntu
 
 RUN     apt-get -y update
-RUN     apt-get -y install  python-pip python-twisted git
+RUN     apt-get -y install  python-pip python-twisted supervisor git
 
 # Install carbon
 RUN     pip install git+git://github.com/graphite-project/whisper@0.9.x &&\

@@ -14,7 +14,7 @@ COPY    config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN     mkdir -p /data/whisper &&\
         mkdir -p /data/log/ &&\
-        chmod 0775 /data /data/whisper
+        chmod 0775 /data /data/whisper /data/log
 
 VOLUME  ["/data/whisper"]
 EXPOSE  2003 2004

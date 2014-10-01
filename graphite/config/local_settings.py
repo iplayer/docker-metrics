@@ -16,30 +16,15 @@ DEFAULT_CACHE_DURATION = 60
 LOG_RENDERING_PERFORMANCE = False
 LOG_CACHE_PERFORMANCE = False
 
-# If you've got more than one backend server they should all be listed here
-#CLUSTER_SERVERS = []
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': '/src/graphite/storage/graphite.db',
+    'USER': '',
+    'PASSWORD': '',
+    'HOST': '',
+    'PORT': ''
 
-# Override this if you need to provide documentation specific to your graphite deployment
-#DOCUMENTATION_URL = "http://wiki.mycompany.com/graphite"
-
-# Enable email-related features
-#SMTP_SERVER = "mail.mycompany.com"
-
-# LDAP / ActiveDirectory authentication setup
-#USE_LDAP_AUTH = True
-#LDAP_SERVER = "ldap.mycompany.com"
-#LDAP_PORT = 389
-#LDAP_SEARCH_BASE = "OU=users,DC=mycompany,DC=com"
-#LDAP_BASE_USER = "CN=some_readonly_account,DC=mycompany,DC=com"
-#LDAP_BASE_PASS = "readonly_account_password"
-#LDAP_USER_QUERY = "(username=%s)"  #For Active Directory use "(sAMAccountName=%s)"
-
-# If sqlite won't cut it, configure your real database here (don't forget to run manage.py syncdb!)
-#DATABASE_ENGINE = 'mysql' # or 'postgres'
-#DATABASE_NAME = '/src/graphite/storage/graphite.db'
-#DATABASE_USER = 'graphite'
-#DATABASE_PASSWORD = 'graphite-is-awesome'
-#DATABASE_HOST = 'mysql.mycompany.com'
-#DATABASE_PORT = '3306'
+}
 
 LOG_DIR = '/src/graphite/storage'

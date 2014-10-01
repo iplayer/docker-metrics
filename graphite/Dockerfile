@@ -28,3 +28,7 @@ RUN     mkdir -p /src/graphite/storage/whisper &&\
         cd /src/graphite/webapp/graphite && python manage.py syncdb --noinput
 
 VOLUME  ["/src/graphite/storage/whisper"]
+
+EXPOSE  2003
+EXPOSE  2004
+EXPOSE  8080

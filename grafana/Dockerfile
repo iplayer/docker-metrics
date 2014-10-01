@@ -17,3 +17,5 @@ COPY    config/nginx.conf /etc/nginx/nginx.conf
 
 VOLUME  ["/data"]
 VOLUME  ["/certificates"]
+
+EXPOSE  80

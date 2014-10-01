@@ -15,12 +15,10 @@ RUN     pip install --install-option="--prefix=/src/graphite" --install-option="
 COPY    config/local_settings.py /src/graphite/webapp/graphite/local_settings.py
 COPY    config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN     mkdir -p /data/graphite &&\
-        mkdir -p /data/graphite/log &&\
-        touch /data/graphite/graphite.db /data/graphite/index &&\
-        chown -R www-data /data/graphite &&\
-        chmod 0775 /data/graphite &&\
-        chmod 0664 /data/graphite/graphite.db &&\
+RUN     touch /src/graphite/storage/graphite.db /src/graphite/storage/index &&\
+        chown -R www-data /src/graphite/storage &&\
+        chmod 0775 /src/graphite/storage &&\
+        chmod 0664 /src/graphite/storage/graphite.db &&\
         cd /src/graphite/webapp/graphite && python manage.py syncdb --noinput
 
 VOLUME  ["/var/log"]

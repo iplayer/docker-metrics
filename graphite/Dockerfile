@@ -22,6 +22,7 @@ RUN     touch /src/graphite/storage/graphite.db /src/graphite/storage/index &&\
         cd /src/graphite/webapp/graphite && python manage.py syncdb --noinput
 
 VOLUME  ["/var/log"]
+VOLUME  ["/data"]
 EXPOSE  8080
 
 CMD     ["/usr/bin/supervisord"]

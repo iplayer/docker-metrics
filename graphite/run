@@ -1,4 +1,4 @@
 #! /bin/bash
 
 mkdir -p /data/graphite
-docker run --name graphite -d -p 8080:8080 -v /data/graphite:/data -v /data/log:/var/log iplayer/graphite
+docker run --name graphite -d -p 8080:8080 -v /data/carbon:/data -v /data/log:/var/log iplayer/graphite

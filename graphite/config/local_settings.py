@@ -42,4 +42,4 @@ LOG_CACHE_PERFORMANCE = False
 #DATABASE_HOST = 'mysql.mycompany.com'
 #DATABASE_PORT = '3306'
 
-LOG_DIR = '/data/graphite/log'
+LOG_DIR = '/src/graphite/log'

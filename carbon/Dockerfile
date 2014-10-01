@@ -17,5 +17,5 @@ RUN     mkdir -p /data/whisper &&\
         chmod 0775 /data /data/whisper
 
 VOLUME  ["/data/whisper"]
-
+EXPOSE  2003 2004
 CMD     ["/usr/bin/supervisord"]

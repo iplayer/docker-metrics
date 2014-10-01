@@ -36,7 +36,7 @@ LOG_CACHE_PERFORMANCE = False
 
 # If sqlite won't cut it, configure your real database here (don't forget to run manage.py syncdb!)
 #DATABASE_ENGINE = 'mysql' # or 'postgres'
-#DATABASE_NAME = 'graphite'
+DATABASE_NAME = '/src/graphite/storage/graphite.db'
 #DATABASE_USER = 'graphite'
 #DATABASE_PASSWORD = 'graphite-is-awesome'
 #DATABASE_HOST = 'mysql.mycompany.com'

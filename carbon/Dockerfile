@@ -18,4 +18,4 @@ RUN     mkdir -p /data/whisper &&\
 
 VOLUME  ["/data/whisper"]
 
-CMD     ["/bin/supervisord"]
+CMD     ["/usr/bin/supervisord"]

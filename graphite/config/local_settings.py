@@ -17,14 +17,14 @@ LOG_RENDERING_PERFORMANCE = False
 LOG_CACHE_PERFORMANCE = False
 
 DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': '/src/graphite/storage/graphite.db',
-    'USER': '',
-    'PASSWORD': '',
-    'HOST': '',
-    'PORT': ''
-
+  'default': {
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': '/src/graphite/storage/graphite.db',
+      'USER': '',
+      'PASSWORD': '',
+      'HOST': '',
+      'PORT': ''
+  }
 }
 
 LOG_DIR = '/src/graphite/storage'

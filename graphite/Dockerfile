@@ -15,7 +15,7 @@ RUN     pip install --install-option="--prefix=/src/graphite" --install-option="
 # Setup graphite
 COPY    config/local_settings.py /src/graphite/webapp/graphite/local_settings.py
 
-RUN     mkdir /data/graphite &&\
+RUN     mkdir -p /data/graphite &&\
         touch /data/graphite/graphite.db /data/graphite/index &&\
         chown -R www-data /data/graphite &&\
         chmod 0775 /data/graphite &&\

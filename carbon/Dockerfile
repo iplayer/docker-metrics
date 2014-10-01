@@ -12,9 +12,8 @@ ADD     config/storage-schemas.conf /src/carbon/conf/storage-schemas.conf
 ADD     config/storage-aggregation.conf /src/carbon/conf/storage-aggregation.conf
 
 RUN     mkdir -p /src/carbon/storage/whisper &&\
-        chown -R www-data /src/carbon/storage &&\
         chmod 0775 /src/carbon/storage /src/carbon/storage/whisper
 
 VOLUME  ["/src/carbon/storage/whisper"]
 
-CMD     ["/src/carbon/bin/carbon-cache.py start"]
+CMD     ["/src/carbon/bin/carbon-cache.py", "start"]

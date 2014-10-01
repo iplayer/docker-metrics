@@ -21,4 +21,9 @@ COPY    config/nginx/elasticsearch.conf /etc/nginx/sites-enabled/elasticsearch.c
 VOLUME  ["/data"]
 VOLUME  ["/certificates"]
 
+# Grafana ports
 EXPOSE  80
+EXPOSE  443
+
+# Elasticsearch port
+EXPOSE 9200

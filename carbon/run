@@ -1,3 +1,4 @@
 #! /bin/bash
 
-docker run --name carbon -d -p 2003 -p 2004 -v /data/whisper:/data iplayer/carbon
+mkdir -p /data/carbon
+docker run --name carbon -d -p 2003 -p 2004 -v /data/carbon:/data iplayer/carbon

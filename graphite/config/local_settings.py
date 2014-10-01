@@ -28,3 +28,4 @@ DATABASES = {
 }
 
 LOG_DIR = '/src/graphite/storage'
+INDEX_FILE = '/src/graphite/storage/index'

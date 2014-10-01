@@ -13,7 +13,10 @@ RUN     cd /tmp &&\
 
 ADD     config/config.js /src/grafana/config.js
 
-COPY    config/nginx.conf /etc/nginx/nginx.conf
+COPY    config/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY    config/nginx/grafana.conf /etc/nginx/sites-enabled/grafana.conf
+COPY    config/nginx/graphite.conf /etc/nginx/sites-enabled/graphite.conf
+COPY    config/nginx/elasticsearch.conf /etc/nginx/sites-enabled/elasticsearch.conf
 
 VOLUME  ["/data"]
 VOLUME  ["/certificates"]

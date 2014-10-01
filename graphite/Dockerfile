@@ -25,6 +25,7 @@ RUN     touch /src/graphite/storage/graphite.db /src/graphite/storage/index &&\
 
 VOLUME  ["/var/log"]
 VOLUME  ["/data"]
+
 EXPOSE  8080
 
 CMD     ["/usr/bin/supervisord"]

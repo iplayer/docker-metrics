@@ -12,6 +12,7 @@ RUN     apt-get -y install  python-django-tagging python-simplejson python-memca
 RUN     pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/webapp" git+git://github.com/graphite-project/graphite-web@0.9.x
 
 # Setup graphite
+COPY    config/initial_data.json /src/graphite/webapp/graphite/initial_data.json
 COPY    config/local_settings.py /src/graphite/webapp/graphite/local_settings.py
 COPY    config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

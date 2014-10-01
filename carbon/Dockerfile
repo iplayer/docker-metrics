@@ -7,13 +7,15 @@ RUN     apt-get -y install  python-pip python-twisted git
 RUN     pip install git+git://github.com/graphite-project/whisper@0.9.x &&\
         pip install --install-option="--prefix=/src/carbon" --install-option="--install-lib=/src/carbon/lib" git+git://github.com/graphite-project/carbon@0.9.x
 
-ADD     config/carbon.conf /src/carbon/conf/carbon.conf
-ADD     config/storage-schemas.conf /src/carbon/conf/storage-schemas.conf
-ADD     config/storage-aggregation.conf /src/carbon/conf/storage-aggregation.conf
+COPY    config/carbon.conf /src/carbon/conf/carbon.conf
+COPY    config/storage-schemas.conf /src/carbon/conf/storage-schemas.conf
+COPY    config/storage-aggregation.conf /src/carbon/conf/storage-aggregation.conf
+COPY    config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN     mkdir -p /src/carbon/storage/whisper &&\
-        chmod 0775 /src/carbon/storage /src/carbon/storage/whisper
+RUN     mkdir -p /data/whisper &&\
+        mkdir -p /data/log/ &&\
+        chmod 0775 /data /data/whisper
 
-VOLUME  ["/src/carbon/storage/whisper"]
+VOLUME  ["/data/whisper"]
 
-CMD     ["/src/carbon/bin/carbon-cache.py", "start"]
+CMD     ["/bin/supervisord"]

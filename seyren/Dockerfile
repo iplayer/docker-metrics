@@ -5,4 +5,4 @@ ADD config/run-seyren.sh /usr/bin/run-seyren.sh
 RUN chmod +x /usr/bin/run-seyren.sh
 
 ENTRYPOINT ["/usr/bin/run-seyren.sh"]
-EXPOSE 8888
+EXPOSE 9000

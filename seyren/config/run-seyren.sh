@@ -14,6 +14,6 @@ echo "Mongo URL $MONGO_URL"
 
 env
 
-java -jar /opt/seyren.jar &
+java -jar /opt/seyren.jar -b0.0.0.0:8888 &
 
 bash

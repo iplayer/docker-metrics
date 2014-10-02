@@ -17,6 +17,7 @@ COPY    config/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY    config/nginx/grafana.conf /etc/nginx/sites-enabled/grafana.conf
 COPY    config/nginx/graphite.conf /etc/nginx/sites-enabled/graphite.conf
 COPY    config/nginx/elasticsearch.conf /etc/nginx/sites-enabled/elasticsearch.conf
+COPY    config/nginx/seyren.conf /etc/nginx/sites-enabled/seyren.conf
 
 VOLUME  ["/data"]
 VOLUME  ["/certificates"]

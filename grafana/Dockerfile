@@ -22,9 +22,4 @@ COPY    config/nginx/seyren.conf /etc/nginx/sites-enabled/seyren.conf
 VOLUME  ["/data"]
 VOLUME  ["/certificates"]
 
-# Grafana ports
-EXPOSE  80
 EXPOSE  443
-
-# Elasticsearch port
-EXPOSE 9201

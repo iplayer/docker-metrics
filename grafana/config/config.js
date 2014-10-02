@@ -11,7 +11,7 @@ function (Settings) {
     datasources: {
       graphite: {
         type: 'graphite',
-        url: "https://username:password@graphite.iplayer.io",
+        url: "https://username:password@graphite.example.com",
         default: true,
         render_method: 'GET'
       }
@@ -21,7 +21,7 @@ function (Settings) {
      * elasticsearch url:
      * For Basic authentication use: http://username:password@domain.com:9200
      */
-    elasticsearch: "https://"+window.location.hostname+":9201",
+    elasticsearch: "https://username:password@elasticsearch.example.com",
 
     /**
      * Multiple graphite servers? Comment out graphiteUrl and replace with

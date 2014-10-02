@@ -13,7 +13,6 @@ RUN     pip install git+git://github.com/graphite-project/whisper@0.9.x &&\
         pip install --install-option="--prefix=/src/graphite" --install-option="--install-lib=/src/graphite/webapp" git+git://github.com/graphite-project/graphite-web@0.9.x
 
 # Setup graphite
-COPY    config/initial_data.json /src/graphite/webapp/graphite/initial_data.json
 COPY    config/local_settings.py /src/graphite/webapp/graphite/local_settings.py
 COPY    config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
